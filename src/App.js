@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import React from 'react';
+import Header from './components/Header';
+import RestaurantCard from './components/RestaurantCard';
+import Search from './components/Search';
+import Footer from './components/Footer';
+import listOfRestaurant from './utils/mockData';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header />
+      <div className="body">
+        <Search />
+        <div className="res-container">
+          {listOfRestaurant.map((restaurant) => (
+            <RestaurantCard key={restaurant.data.id} restaurant={restaurant.data} />
+          ))}
+        </div>
+      </div>
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
